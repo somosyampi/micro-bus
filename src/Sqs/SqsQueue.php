@@ -86,4 +86,15 @@ class SqsQueue extends AbstractSqsQueue
                 return $message;
             });
     }
+
+    /**
+     * Get the number of queue jobs that are ready to process.
+     *
+     * @param  string|null  $queue
+     * @return int
+     */
+    public function readyNow($queue = null)
+    {
+        return $this->size($this->getQueue($queue));
+    }
 }
